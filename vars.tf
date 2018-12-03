@@ -10,6 +10,9 @@ variable "region" {
 variable "aws_ami" {
   description = "AMI ID to use"
 }
+variable "aws_instance_type" {
+  description = "With this config, I'm trying to use ELK Stack on a t2.micro"
+}
 variable "aws_private_key_name" {
   description = "AWS private key for authentication"
 }
@@ -21,7 +24,4 @@ variable "userdata" {
   echo "deb https://artifacts.elastic.co/packages/6.x/apt stable main" | tee -a /etc/apt/sources.list.d/elastic-6.x.list
   apt update
   HEREDOC
-}
-variable "aws_instance_type" {
-  description = "With this config, I'm trying to use ELK Stack on a t2.micro"
 }
