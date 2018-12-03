@@ -15,3 +15,8 @@ resource "aws_instance" "web" {
     Name = "ELK Stack On Diet"
   }
 }
+
+resource "aws_key_pair" "elk-on-diet" {
+    key_name = "${var.aws_private_key_name}"
+    public_key = "${var.aws_public_key}"
+}
