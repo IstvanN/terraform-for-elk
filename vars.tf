@@ -20,14 +20,17 @@ variable "aws_public_key" {
   description = "AWS private key's public pair"
 }
 variable "userdata" {
-  description = "Script to install import Elasticsearch PGP key and APT repository, and install Kibana for start"
+  description = "Script to install Elasticsearch and Kibana and starting them"
   default = <<-HEREDOC
   #!/bin/bash
   wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | apt-key add -
   echo "deb https://artifacts.elastic.co/packages/6.x/apt stable main" | tee -a /etc/apt/sources.list.d/elastic-6.x.list
-  apt update
-  apt install default-jre
-  apt install kibana
-  service kibana start
+  sudo apt update
+  sudo apt install -y default-jre
+  sudo apt install -y kibana
+  sudo apt install -y elasticsearch
+  sudo apt install rsyslog-elasticsearch
+  sudo service start kibana
+  sudo service start elasticsearch
   HEREDOC
 }

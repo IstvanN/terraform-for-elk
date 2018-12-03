@@ -13,7 +13,7 @@ resource "aws_instance" "web" {
   user_data = "${var.userdata}"
 
   tags {
-    Name = "ELK Stack On Diet"
+    Name = "ELK-Stack-on-diet"
   }
 }
 
